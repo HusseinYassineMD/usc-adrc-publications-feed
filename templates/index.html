@@ -298,12 +298,10 @@
         <label for="author-filter">ADRC Author</label>
         <select id="author-filter"><option value="">All authors</option></select>
       </div>
-      {% if enable_refresh %}
       <div class="filter-group">
         <label>&nbsp;</label>
-        <button class="btn" id="refresh-btn">Refresh from PubMed</button>
+        <button class="btn" id="refresh-btn" type="button">Refresh from PubMed</button>
       </div>
-      {% endif %}
     </div>
 
     <hr class="divider">
@@ -521,17 +519,20 @@
       });
     }
 
-    async function loadPublications(refresh = false) {
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function loadPublications() {
       if (refreshBtn) refreshBtn.disabled = true;
       if (!allPublications.length) {
-        content.innerHTML = '<div class="loading"><div class="spinner"></div><p>Fetching publications from PubMed…</p></div>';
+        content.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading publications…</p></div>';
       }
 
       try {
-        const url = refresh ? "/api/publications?refresh=true" : "/api/publications";
-        const res = await fetch(url);
+        const res = await fetch("/api/publications");
         const data = await res.json();
-        if (data.error) throw new Error(data.error);
+        if (!res.ok) throw new Error(data.error || "Failed to load publications");
 
         allPublications = data.publications || [];
         lastUpdated.textContent = formatFetchedAt(data.fetched_at);
@@ -544,11 +545,49 @@
       }
     }
 
+    async function pollRefreshStatus() {
+      while (true) {
+        const res = await fetch("/api/publications/refresh/status");
+        const status = await res.json();
+        const msg = status.message || "Refreshing from PubMed…";
+        content.innerHTML = `<div class="loading"><div class="spinner"></div><p>${escapeHtml(msg)}</p><p style="margin-top:0.75rem;font-size:0.95rem;">This usually takes 4–6 minutes. Please keep this tab open.</p></div>`;
+
+        if (status.status === "complete") {
+          await loadPublications();
+          return;
+        }
+        if (status.status === "error") {
+          content.innerHTML = `<div class="error"><p>PubMed refresh failed: ${escapeHtml(status.error || "Unknown error")}</p></div>`;
+          if (refreshBtn) refreshBtn.disabled = false;
+          return;
+        }
+        await sleep(2500);
+      }
+    }
+
+    async function startPubMedRefresh() {
+      if (!refreshBtn) return;
+      refreshBtn.disabled = true;
+      try {
+        const res = await fetch("/api/publications/refresh", { method: "POST" });
+        const data = await res.json();
+        if (res.status === 409) {
+          await pollRefreshStatus();
+          return;
+        }
+        if (!res.ok) throw new Error(data.error || data.message || "Could not start refresh");
+        await pollRefreshStatus();
+      } catch (err) {
+        content.innerHTML = `<div class="error"><p>${escapeHtml(err.message)}</p></div>`;
+        refreshBtn.disabled = false;
+      }
+    }
+
     keywordFilter.addEventListener("input", applyFilters);
     yearFrom.addEventListener("change", applyFilters);
     yearTo.addEventListener("change", applyFilters);
     authorFilter.addEventListener("change", applyFilters);
-    if (refreshBtn) refreshBtn.addEventListener("click", () => loadPublications(true));
+    if (refreshBtn) refreshBtn.addEventListener("click", startPubMedRefresh);
 
     loadPublications();
   </script>

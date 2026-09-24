@@ -32,13 +32,21 @@ python app.py
 
 Open **http://127.0.0.1:5000**
 
-## Live site (team link)
+## Live site (team link — **Refresh from PubMed** works here)
 
-**https://husseinyassinemd.github.io/usc-adrc-publications-feed/**
+**https://adrc-publications.onrender.com/**
 
-GitHub repo: https://github.com/HusseinYassineMD/usc-adrc-publications-feed
+GitHub Pages redirects there: https://husseinyassinemd.github.io/usc-adrc-publications-feed/
 
-To refresh live data: run `python fetch_pubmed.py`, then `python scripts/build_pages.py`, commit and push `docs/`.
+Repo: https://github.com/HusseinYassineMD/usc-adrc-publications-feed
+
+### First-time Render setup (one time)
+
+1. Open [Render → New Blueprint](https://dashboard.render.com/blueprints) and connect the GitHub repo.
+2. Apply `render.yaml` (creates the `adrc-publications` web service).
+3. Share **https://adrc-publications.onrender.com/** with the team.
+
+Click **Refresh from PubMed** on the site (takes ~4–6 minutes; keep the tab open).
 
 Use **Refresh from PubMed** in the UI to update the cache.
 

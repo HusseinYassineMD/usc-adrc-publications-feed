@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import json
 import os
+import threading
+from datetime import datetime, timezone
 from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
@@ -15,18 +17,51 @@ BASE_DIR = Path(__file__).resolve().parent
 
 app = Flask(__name__)
 
-ENABLE_PUBMED_REFRESH = os.environ.get("ENABLE_PUBMED_REFRESH", "").lower() in (
-    "1",
-    "true",
-    "yes",
-)
+_refresh_lock = threading.Lock()
+_refresh_state = {
+    "status": "idle",
+    "message": "",
+    "error": None,
+    "started_at": None,
+    "finished_at": None,
+}
+
+
+def _read_cache() -> dict:
+    with open(CACHE_PATH, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def load_cached_or_fetch(refresh: bool = False) -> dict:
     if refresh or not CACHE_PATH.exists():
         return fetch_publications()
-    with open(CACHE_PATH, encoding="utf-8") as f:
-        return json.load(f)
+    return _read_cache()
+
+
+def _run_pubmed_refresh() -> None:
+    global _refresh_state
+    try:
+        _refresh_state["message"] = "Searching PubMed for all ADRC authors and keywords…"
+        fetch_publications()
+        _refresh_state.update(
+            {
+                "status": "complete",
+                "message": "PubMed refresh finished.",
+                "error": None,
+                "finished_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
+    except Exception as exc:
+        _refresh_state.update(
+            {
+                "status": "error",
+                "message": "Refresh failed.",
+                "error": str(exc),
+                "finished_at": datetime.now(timezone.utc).isoformat(),
+            }
+        )
+    finally:
+        _refresh_lock.release()
 
 
 @app.route("/")
@@ -36,24 +71,46 @@ def index():
         "index.html",
         author_count=len(config["authors"]),
         keyword_count=len(config["keywords"]),
-        enable_refresh=ENABLE_PUBMED_REFRESH,
     )
 
 
 @app.route("/api/publications")
 def api_publications():
-    refresh = request.args.get("refresh", "").lower() in ("1", "true", "yes")
-    if refresh and not ENABLE_PUBMED_REFRESH:
-        return jsonify(
-            {
-                "error": "Live refresh is disabled on hosted deploy. Data is updated via scheduled rebuild."
-            }
-        ), 503
     try:
-        data = load_cached_or_fetch(refresh=refresh)
-        return jsonify(data)
+        if not CACHE_PATH.exists():
+            return jsonify({"error": "No data yet. Click Refresh from PubMed."}), 404
+        return jsonify(_read_cache())
     except Exception as exc:
         return jsonify({"error": str(exc)}), 500
+
+
+@app.route("/api/publications/refresh", methods=["POST"])
+def api_publications_refresh_start():
+    if not _refresh_lock.acquire(blocking=False):
+        return jsonify(
+            {
+                "status": _refresh_state["status"],
+                "message": "A PubMed refresh is already running.",
+            }
+        ), 409
+
+    _refresh_state.update(
+        {
+            "status": "running",
+            "message": "Starting PubMed refresh…",
+            "error": None,
+            "started_at": datetime.now(timezone.utc).isoformat(),
+            "finished_at": None,
+        }
+    )
+    thread = threading.Thread(target=_run_pubmed_refresh, daemon=True)
+    thread.start()
+    return jsonify(_refresh_state)
+
+
+@app.route("/api/publications/refresh/status")
+def api_publications_refresh_status():
+    return jsonify(_refresh_state)
 
 
 @app.route("/api/config")
