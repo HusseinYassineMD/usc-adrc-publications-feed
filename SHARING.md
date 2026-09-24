@@ -45,7 +45,9 @@ python fetch_pubmed.py      # first-time PubMed pull (optional if cache provided
 python app.py
 ```
 
-Open **http://127.0.0.1:5000**
+**Live link:** https://husseinyassinemd.github.io/usc-adrc-publications-feed/
+
+Local dev: **http://127.0.0.1:5000** (`python app.py`)
 
 ## Security notes for internal use
 

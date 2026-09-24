@@ -32,6 +32,14 @@ python app.py
 
 Open **http://127.0.0.1:5000**
 
+## Live site (team link)
+
+**https://husseinyassinemd.github.io/usc-adrc-publications-feed/**
+
+GitHub repo: https://github.com/HusseinYassineMD/usc-adrc-publications-feed
+
+To refresh live data: run `python fetch_pubmed.py`, then `python scripts/build_pages.py`, commit and push `docs/`.
+
 Use **Refresh from PubMed** in the UI to update the cache.
 
 ## Project layout
