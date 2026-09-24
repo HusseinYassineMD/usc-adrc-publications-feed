@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Manager docs — keep local; params are in data/config.json
+*.docx

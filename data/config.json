@@ -1,0 +1,296 @@
+{
+  "project": "USC ADRC Publications Live Feed",
+  "source_documents": [
+    "ADRC Publications Authors + Key words.docx",
+    "B2_Publications_ADRC Y6_1.28.26.docx"
+  ],
+  "authors": [
+    {
+      "name": "Helena Chui, MD",
+      "pubmed_query": "(Chui H[Author] OR Chui HC[Author] OR \"Helena Chui\"[Author])",
+      "verify_names": ["helena chui", "helena c chui", "chui hc", "chui h"],
+      "ambiguous": false
+    },
+    {
+      "name": "Daniel Nation, PhD",
+      "pubmed_query": "(Nation D[Author] OR Nation DA[Author] OR \"Daniel Nation\"[Author])",
+      "verify_names": ["daniel nation", "daniel a nation", "nation da", "nation d"],
+      "ambiguous": false
+    },
+    {
+      "name": "Duke Han, PhD",
+      "pubmed_query": "(Han SD[Author] OR \"S Duke Han\"[Author] OR \"Duke Han\"[Author])",
+      "verify_names": ["duke han", "s duke han", "han sd", "han s d"],
+      "ambiguous": false
+    },
+    {
+      "name": "Debra Hawes, MD",
+      "pubmed_query": "Hawes D[Author]",
+      "verify_names": ["debra hawes", "hawes d", "d hawes"],
+      "ambiguous": false
+    },
+    {
+      "name": "Anne Hiniker, MD, PhD",
+      "pubmed_query": "(Hiniker A[Author] OR \"Anne Hiniker\"[Author])",
+      "verify_names": ["anne hiniker", "hiniker a", "a hiniker"],
+      "ambiguous": false
+    },
+    {
+      "name": "Hussein Yassine, MD",
+      "pubmed_query": "(Yassine H[Author] OR Yassine HN[Author] OR \"Hussein Yassine\"[Author])",
+      "verify_names": ["hussein yassine", "hussein n yassine", "yassine hn", "yassine h"],
+      "ambiguous": false
+    },
+    {
+      "name": "Elizabeth Joe, MD",
+      "pubmed_query": "(\"Elizabeth Joe\"[Author] OR Joe EB[Author] OR (Joe E[Author] AND USC[Affiliation]))",
+      "verify_names": ["elizabeth joe", "joe eb", "e joe", "bartelt joe"],
+      "ambiguous": true
+    },
+    {
+      "name": "Kirsten Lynch, PhD",
+      "pubmed_query": "(Lynch K[Author] OR \"Kirsten Lynch\"[Author])",
+      "verify_names": ["kirsten lynch", "lynch k", "k lynch", "kirsten m lynch"],
+      "ambiguous": false
+    },
+    {
+      "name": "Lon Schneider, MD",
+      "pubmed_query": "Schneider LS[Author]",
+      "verify_names": ["lon schneider", "schneider ls", "l schneider"],
+      "ambiguous": false
+    },
+    {
+      "name": "Maria P. Aranda, PhD",
+      "pubmed_query": "(Aranda MP[Author] OR \"Maria Aranda\"[Author] OR \"Maria P Aranda\"[Author])",
+      "verify_names": ["maria aranda", "maría aranda", "maria p aranda", "aranda mp"],
+      "ambiguous": false
+    },
+    {
+      "name": "John Ringman, MD, MS",
+      "pubmed_query": "(Ringman JM[Author] OR \"John Ringman\"[Author])",
+      "verify_names": ["john ringman", "ringman jm", "j ringman"],
+      "ambiguous": false
+    },
+    {
+      "name": "Robert Rissman, PhD",
+      "pubmed_query": "(Rissman R[Author] OR \"Robert Rissman\"[Author])",
+      "verify_names": ["robert rissman", "rissman r", "r rissman"],
+      "ambiguous": false
+    },
+    {
+      "name": "Abhay Sagare, PhD",
+      "pubmed_query": "(Sagare A[Author] OR \"Abhay Sagare\"[Author])",
+      "verify_names": ["abhay sagare", "sagare a", "a sagare"],
+      "ambiguous": false
+    },
+    {
+      "name": "Arthur W. Toga, PhD",
+      "pubmed_query": "(Toga AW[Author] OR \"Arthur Toga\"[Author])",
+      "verify_names": ["arthur toga", "toga aw", "a w toga"],
+      "ambiguous": false
+    },
+    {
+      "name": "Xinhui Wang, PhD",
+      "pubmed_query": "(\"Xinhui Wang\"[Author] OR (Wang X[Author] AND Xinhui[Affiliation]))",
+      "verify_names": ["xinhui wang"],
+      "ambiguous": true
+    },
+    {
+      "name": "Michael Bienkowski, PhD",
+      "pubmed_query": "(Bienkowski M[Author] OR \"Michael Bienkowski\"[Author])",
+      "verify_names": ["michael bienkowski", "bienkowski m", "m bienkowski"],
+      "ambiguous": false
+    },
+    {
+      "name": "Hosung Kim, PhD",
+      "pubmed_query": "(\"Hosung Kim\"[Author] OR (Kim H[Author] AND Hosung[Affiliation]))",
+      "verify_names": ["hosung kim", "kim hosung"],
+      "ambiguous": true
+    },
+    {
+      "name": "Kassandra Kisler Elliott, PhD",
+      "pubmed_query": "(Kisler K[Author] OR \"Kassandra Kisler\"[Author] OR \"Kisler Elliott\"[Author])",
+      "verify_names": ["kassandra kisler", "kisler k", "kisler elliott", "k elliott"],
+      "ambiguous": false
+    },
+    {
+      "name": "Rijwan Uddin Ahammad, PhD",
+      "pubmed_query": "(Ahammad R[Author] OR \"Rijwan Ahammad\"[Author])",
+      "verify_names": ["rijwan ahammad", "ahammad r", "uddin ahammad"],
+      "ambiguous": false
+    },
+    {
+      "name": "Ciorana Roman Ortiz, PhD",
+      "pubmed_query": "(\"Roman Ortiz\"[Author] OR \"Ciorana Roman\"[Author] OR Roman-Ortiz C[Author])",
+      "verify_names": ["ciorana roman", "roman ortiz", "roman-ortiz"],
+      "ambiguous": true
+    },
+    {
+      "name": "Maryam Fotouhi, PhD",
+      "pubmed_query": "(Fotouhi M[Author] OR \"Maryam Fotouhi\"[Author])",
+      "verify_names": ["maryam fotouhi", "fotouhi m", "m fotouhi"],
+      "ambiguous": false
+    },
+    {
+      "name": "Max Thorwald, PhD",
+      "pubmed_query": "(Thorwald M[Author] OR \"Max Thorwald\"[Author])",
+      "verify_names": ["max thorwald", "thorwald m", "m thorwald"],
+      "ambiguous": false
+    }
+  ],
+  "keywords": [
+    "Alzheimer's disease",
+    "Alzheimer's disease and related dementias",
+    "APOE ε4",
+    "Mild cognitive impairment",
+    "Cognitive decline",
+    "Neurodegeneration",
+    "Aging",
+    "Alzheimer's disease biomarkers",
+    "Plasma biomarkers",
+    "Cerebrospinal fluid biomarkers",
+    "Amyloid beta",
+    "Phosphorylated tau",
+    "Neurofilament light chain",
+    "Neuroimaging",
+    "Magnetic resonance imaging",
+    "Amyloid PET",
+    "Tau PET",
+    "Cerebrovascular disease",
+    "Cerebral perfusion",
+    "Vascular cognitive impairment",
+    "Alzheimer's disease genetics",
+    "Autosomal dominant Alzheimer's disease",
+    "Early-onset Alzheimer's disease",
+    "Neuropathology",
+    "Health disparities",
+    "APOE-targeted therapeutics",
+    "APOE glycosylation",
+    "Cholesterol metabolism",
+    "Lipid dysregulation",
+    "Cellular senescence",
+    "Microglia",
+    "Neuroinflammation",
+    "Gamma-secretase",
+    "PSEN1",
+    "PSEN2",
+    "APP",
+    "Plasma p-tau217",
+    "Blood-based biomarkers",
+    "Blood transcriptomics",
+    "Gene expression",
+    "Genome-wide association studies",
+    "Multi-ancestry genetics",
+    "Functional connectivity",
+    "White matter abnormalities",
+    "Perivascular spaces",
+    "Cerebral small vessel disease",
+    "Blood pressure variability",
+    "Arterial spin labeling",
+    "Dynamic contrast-enhanced MRI",
+    "Artificial intelligence",
+    "Machine learning",
+    "Multimodal imaging",
+    "Cognitive assessment",
+    "Dementia prevention",
+    "Clinical progression",
+    "Racial and ethnic disparities",
+    "Diverse and underserved populations",
+    "Safety-net health systems",
+    "Dementia care",
+    "Caregiving",
+    "Social isolation",
+    "Neuropsychiatric symptoms",
+    "Functional decline",
+    "Environmental risk factors",
+    "Air pollution",
+    "Dietary patterns",
+    "Precision medicine"
+  ],
+  "strong_keywords": [
+    "Alzheimer's disease",
+    "Alzheimer's disease and related dementias",
+    "APOE ε4",
+    "Mild cognitive impairment",
+    "Cognitive decline",
+    "Neurodegeneration",
+    "Alzheimer's disease biomarkers",
+    "Plasma biomarkers",
+    "Cerebrospinal fluid biomarkers",
+    "Amyloid beta",
+    "Phosphorylated tau",
+    "Neurofilament light chain",
+    "Amyloid PET",
+    "Tau PET",
+    "Cerebrovascular disease",
+    "Cerebral perfusion",
+    "Vascular cognitive impairment",
+    "Alzheimer's disease genetics",
+    "Autosomal dominant Alzheimer's disease",
+    "Early-onset Alzheimer's disease",
+    "Neuropathology",
+    "Health disparities",
+    "APOE-targeted therapeutics",
+    "APOE glycosylation",
+    "Cholesterol metabolism",
+    "Lipid dysregulation",
+    "Cellular senescence",
+    "Microglia",
+    "Neuroinflammation",
+    "Gamma-secretase",
+    "PSEN1",
+    "PSEN2",
+    "APP",
+    "Plasma p-tau217",
+    "Blood-based biomarkers",
+    "Perivascular spaces",
+    "Cerebral small vessel disease",
+    "Blood pressure variability",
+    "Dementia prevention",
+    "Clinical progression",
+    "Racial and ethnic disparities",
+    "Diverse and underserved populations",
+    "Safety-net health systems",
+    "Dementia care",
+    "Caregiving",
+    "Social isolation",
+    "Neuropsychiatric symptoms",
+    "Functional decline",
+    "Environmental risk factors",
+    "Air pollution",
+    "Dietary patterns",
+    "Precision medicine"
+  ],
+  "broad_keywords": [
+    "Aging",
+    "Neuroimaging",
+    "Magnetic resonance imaging",
+    "Artificial intelligence",
+    "Machine learning",
+    "Multimodal imaging",
+    "Functional connectivity",
+    "Gene expression",
+    "Blood transcriptomics",
+    "Genome-wide association studies",
+    "Multi-ancestry genetics",
+    "White matter abnormalities",
+    "Arterial spin labeling",
+    "Dynamic contrast-enhanced MRI",
+    "Cognitive assessment"
+  ],
+  "usc_affiliation_markers": [
+    "usc",
+    "university of southern california",
+    "keck school of medicine",
+    "keck school",
+    "leonard davis school",
+    "adrc",
+    "loni",
+    "laboratory of neuro imaging",
+    "zilkha neurogenetic",
+    "stevens neuroimaging",
+    "mark and mary stevens",
+    "alzheimer disease research center",
+    "memory and aging center"
+  ]
+}
